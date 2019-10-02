@@ -45,10 +45,22 @@ Application contains build in cron job which logs the even every 15 seconds.
 ## Scheduling an Email using the /scheduleEmail API
 
 ```bash
-curl -i -H "Content-Type: application/json" -X POST \
--d '{"email":"callicoder@gmail.com","subject":"Things I wanna say to my Future self","body":"Dear Future me, <br><br> <b>Think Big And Don’t Listen To People Who Tell You It Can’t Be Done. Life’s Too Short To Think Small.</b> <br><br> Cheers, <br>Rajeev!","dateTime":"2018-09-04T16:15:00","timeZone":"Asia/Kolkata"}' \
-http://localhost:8080/scheduleEmail
+curl -X POST \
+  http://localhost:8081/scheduleJob \
+  -H 'Accept: */*' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: JSESSIONID=32A02F6E2D185C8702E7BA6016A913E3' \
+  -H 'Host: localhost:8081' \
+  -d '{
+	"dateTime": "2019-10-02T15:14:00",
+	"timeZone": "America/Los_Angeles"
+}'
 
 # Output
-{"success":true,"jobId":"0741eafc-0627-446f-9eaf-26f5d6b29ec2","jobGroup":"email-jobs","message":"Email Scheduled Successfully!"}
+{
+    "success": true,
+    "jobId": "38aace30-ccf8-4c25-bca8-25f0f58b3c2a",
+    "jobGroup": "rest-jobs",
+    "message": "Scheduled Successfully!"
+}
 ```
