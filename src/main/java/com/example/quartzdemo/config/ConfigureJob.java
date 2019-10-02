@@ -24,7 +24,8 @@ public class ConfigureJob {
         return TriggerBuilder.newTrigger().forJob(jobADetails)
 
                 .withIdentity("sampleTriggerA")
-                .withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * ? * * *"))
+                // fire event every 20 seconds
+                .withSchedule(CronScheduleBuilder.cronSchedule("0/20 * * ? * * *"))
                 .build();
     }
 }
