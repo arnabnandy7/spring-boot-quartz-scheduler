@@ -24,6 +24,8 @@ public class ConfigureJob {
         return TriggerBuilder.newTrigger().forJob(jobADetails)
 
                 .withIdentity("sampleTriggerA")
+                // online cron expression generator
+                // https://www.freeformatter.com/cron-expression-generator-quartz.html
                 // fire event every 20 seconds
                 .withSchedule(CronScheduleBuilder.cronSchedule("0/20 * * ? * * *"))
                 .build();
