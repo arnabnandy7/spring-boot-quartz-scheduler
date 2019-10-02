@@ -1,12 +1,10 @@
 package com.example.quartzdemo.payload;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-public class ScheduleEmailRequest {
+public class ScheduleRequest {
     @NotNull
     private LocalDateTime dateTime;
 
