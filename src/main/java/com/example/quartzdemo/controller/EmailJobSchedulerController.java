@@ -52,11 +52,8 @@ public class EmailJobSchedulerController {
     }
 
     private JobDetail buildJobDetail(ScheduleEmailRequest scheduleEmailRequest) {
-        JobDataMap jobDataMap = new JobDataMap();
 
-        jobDataMap.put("email", scheduleEmailRequest.getEmail());
-        jobDataMap.put("subject", scheduleEmailRequest.getSubject());
-        jobDataMap.put("body", scheduleEmailRequest.getBody());
+        JobDataMap jobDataMap = new JobDataMap();
 
         return JobBuilder.newJob(EmailJob.class)
                 .withIdentity(UUID.randomUUID().toString(), "email-jobs")

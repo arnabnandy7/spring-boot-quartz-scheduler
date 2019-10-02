@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;
+import java.time.ZonedDateTime;
 
 @Component
 public class EmailJob extends QuartzJobBean {
@@ -30,28 +31,29 @@ public class EmailJob extends QuartzJobBean {
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         logger.info("Executing Job with key {}", jobExecutionContext.getJobDetail().getKey());
 
-        JobDataMap jobDataMap = jobExecutionContext.getMergedJobDataMap();
-        String subject = jobDataMap.getString("subject");
-        String body = jobDataMap.getString("body");
-        String recipientEmail = jobDataMap.getString("email");
+//        JobDataMap jobDataMap = jobExecutionContext.getMergedJobDataMap();
+//        String subject = jobDataMap.getString("subject");
+//        String body = jobDataMap.getString("body");
+//        String recipientEmail = jobDataMap.getString("email");
 
-        sendMail(mailProperties.getUsername(), recipientEmail, subject, body);
+//        sendMail(mailProperties.getUsername(), recipientEmail, subject, body);
+        logger.info( "Executing scheduler: " + ZonedDateTime.now() );
     }
 
-    private void sendMail(String fromEmail, String toEmail, String subject, String body) {
-        try {
-            logger.info("Sending Email to {}", toEmail);
-            MimeMessage message = mailSender.createMimeMessage();
-
-            MimeMessageHelper messageHelper = new MimeMessageHelper(message, StandardCharsets.UTF_8.toString());
-            messageHelper.setSubject(subject);
-            messageHelper.setText(body, true);
-            messageHelper.setFrom(fromEmail);
-            messageHelper.setTo(toEmail);
-
-            mailSender.send(message);
-        } catch (MessagingException ex) {
-            logger.error("Failed to send email to {}", toEmail);
-        }
-    }
+//    private void sendMail(String fromEmail, String toEmail, String subject, String body) {
+//        try {
+//            logger.info("Sending Email to {}", toEmail);
+//            MimeMessage message = mailSender.createMimeMessage();
+//
+//            MimeMessageHelper messageHelper = new MimeMessageHelper(message, StandardCharsets.UTF_8.toString());
+//            messageHelper.setSubject(subject);
+//            messageHelper.setText(body, true);
+//            messageHelper.setFrom(fromEmail);
+//            messageHelper.setTo(toEmail);
+//
+//            mailSender.send(message);
+//        } catch (MessagingException ex) {
+//            logger.error("Failed to send email to {}", toEmail);
+//        }
+//    }
 }
