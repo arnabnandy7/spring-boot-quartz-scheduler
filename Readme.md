@@ -1,6 +1,4 @@
-# Spring Boot Quartz Scheduler Example: Building an Email Scheduling app
-
-**Complete Tutorial:** https://www.callicoder.com/spring-boot-quartz-scheduler-email-scheduling-example/
+# Spring Boot Quartz Scheduler Example
 
 ## Requirements
 
@@ -14,9 +12,7 @@
 
 **1. Clone the application**
 
-```bash
-git clone https://github.com/callicoder/spring-boot-mysql-rest-api-tutorial.git
-```
+
 
 **2. Create MySQL database**
 
@@ -29,23 +25,7 @@ create database quartz_demo
 open `src/main/resources/application.properties`, and change `spring.datasource.username` and `spring.datasource.password` properties as per your mysql installation
 
 
-**4. Setup Spring Mail**
-
-The project is using Gmail's SMTP server for sending emails. Whether you use Gmail or any other SMTP server, you'll need to configure the following mail properties accordingly -
-
-```properties
-spring.mail.host=smtp.gmail.com
-spring.mail.port=587
-spring.mail.username=rajeevc217@gmail.com
-spring.mail.password=
-```
-
-If you're using Gmail, you need to allow the third party apps to send emails by following the instructions below -
-
-+ Go to https://myaccount.google.com/security?pli=1#connectedapps
-+ Set ‘Allow less secure apps’ to YES
-
-**5. Create Quartz Tables**
+**4. Create Quartz Tables**
 
 The project stores all the scheduled Jobs in MySQL database. You'll need to create the tables that Quartz uses to store Jobs and other job-related data. Please create Quartz specific tables by executing the `quartz_tables.sql` script located inside `src/main/resources` directory.
 
@@ -60,6 +40,7 @@ Finally, You can run the app by typing the following command from the root direc
 ```bash
 mvn spring-boot:run
 ```
+Application contains build in cron job which logs the even every 15 seconds.
 
 ## Scheduling an Email using the /scheduleEmail API
 
