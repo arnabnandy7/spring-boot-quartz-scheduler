@@ -24,6 +24,7 @@ create database quartz_demo
 
 open `src/main/resources/application.properties`, and change `spring.datasource.username` and `spring.datasource.password` properties as per your mysql installation
 
+Make sure you set port correctly.  I have different from default as my machine had both installed MySQL and Docker version
 
 **4. Create Quartz Tables**
 
