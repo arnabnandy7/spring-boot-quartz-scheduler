@@ -43,7 +43,7 @@ mvn spring-boot:run
 ```
 Application contains build in cron job which logs the even every 15 seconds.
 
-## Scheduling an Email using the /scheduleEmail API
+## Scheduling an Event using the /scheduleJob API
 
 ```bash
 curl -X POST \
