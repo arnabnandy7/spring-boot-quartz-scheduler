@@ -2,7 +2,7 @@
 
 ## Requirements
 
-1. Java - 1.8.x
+1. Java - 1.8.x, Java 11
 
 2. Maven - 3.x.x
 
