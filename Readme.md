@@ -1,5 +1,9 @@
 # Spring Boot Quartz Scheduler Example
 
+I forked this repository which was using REST call to schedule email.  I did not need to send email instead I need to trigger an event ( logger ).  
+
+I have also extended the project with CRON scheduler, which I need for my current work project.
+
 ## Requirements
 
 1. Java - 1.8.x, Java 11
