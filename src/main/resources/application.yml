@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    password: password
+    url: jdbc:mysql://localhost:3307/quartz_demo?useSSL=false
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  quartz:
+    jdbc:
+      schema: classpath:org/quartz/impl/jdbcjobstore/tables_mysql_innodb.sql
+    job-store-type: jdbc
+    properties:
+      org:
+        quartz:
+          jobStore:
+            isClustered: true
+          scheduler:
+            instanceId: AUTO
+          threadPool:
+            threadCount: 5
