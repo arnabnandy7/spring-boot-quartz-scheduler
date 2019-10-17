@@ -72,7 +72,7 @@ curl -X POST \
 }
 ```
 
-**7. Running SpringBoot Quartz with MSSQL Server
+**7. Running SpringBoot Quartz with MSSQL Server**
 
 Run MSSQL as docker: 
 ```docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=2019October$$$' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest```
