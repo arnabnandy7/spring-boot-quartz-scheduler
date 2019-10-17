@@ -34,6 +34,8 @@ Make sure you set port correctly.  I have different from default as my machine h
 
 The project stores all the scheduled Jobs in MySQL database. You'll need to create the tables that Quartz uses to store Jobs and other job-related data. Please create Quartz specific tables by executing the `quartz_tables.sql` script located inside `src/main/resources` directory.
 
+
+
 ```bash
 mysql> source <PATH_TO_QUARTZ_TABLES.sql>
 ```
@@ -69,3 +71,43 @@ curl -X POST \
     "message": "Scheduled Successfully!"
 }
 ```
+
+**7. Running SpringBoot Quartz with MSSQL Server
+
+Run MSSQL as docker: 
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=2019October$$$' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
+
+Create database `quartz_schema` in MSSQL server
+
+Run DDL script tables_sqlServer.sql provided with quartz jar file.
+
+Add dependency to gradle ( or maven ) to import the driver:
+compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '8.1.0.jre11-preview'
+
+Change application.yml to connect to database:
+```spring:
+  datasource:
+    password: 2019October$$$
+    url: jdbc:sqlserver://localhost:1433;database=quartz_schema;SelectMethod=cursor
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2008Dialect
+  quartz:
+    jdbc:
+      schema: classpath:org/quartz/impl/jdbcjobstore/tables_sqlServer.sql
+    job-store-type: jdbc
+    properties:
+      org:
+        quartz:
+          jobStore:
+            isClustered: true
+          scheduler:
+            instanceId: AUTO
+          threadPool:
+            threadCount: 5
+
+org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.MSSQLDelegate```
