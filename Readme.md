@@ -75,14 +75,14 @@ curl -X POST \
 **7. Running SpringBoot Quartz with MSSQL Server
 
 Run MSSQL as docker: 
-docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=2019October$$$' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
+```docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=2019October$$$' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
 
 Create database `quartz_schema` in MSSQL server
 
 Run DDL script tables_sqlServer.sql provided with quartz jar file.
 
 Add dependency to gradle ( or maven ) to import the driver:
-compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '8.1.0.jre11-preview'
+```compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '8.1.0.jre11-preview'
 
 Change application.yml to connect to database:
 ```spring:
@@ -110,4 +110,4 @@ Change application.yml to connect to database:
           threadPool:
             threadCount: 5
 
-org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.MSSQLDelegate```
+org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.MSSQLDelegate
