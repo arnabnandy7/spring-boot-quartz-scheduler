@@ -110,4 +110,4 @@ Change application.yml to connect to database:
           threadPool:
             threadCount: 5
 
-org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.MSSQLDelegate
+org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.MSSQLDelegate```
