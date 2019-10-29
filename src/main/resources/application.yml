@@ -1,7 +1,7 @@
 spring:
   datasource:
     password: password
-    url: jdbc:mysql://localhost:3307/quartz_demo?useSSL=false
+    url: jdbc:mysql://localhost:13306/quartz_demo?useSSL=false
     username: root
   jpa:
     hibernate:
