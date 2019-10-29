@@ -20,6 +20,8 @@ I have also extended the project with CRON scheduler, which I needed for my curr
 
 **2. Create MySQL database**
 
+There is a `docker-compose.yml` in docker directory.  You can use it to start mysql.
+
 ```bash
 create database quartz_demo
 ```
