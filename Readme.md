@@ -113,3 +113,6 @@ Change application.yml to connect to database:
             threadCount: 5
 
 org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.MSSQLDelegate```
+
+
+<!-- GitAds-Verify: BSGH8SOKSGQ7UZ48JM9RC8LIMQ93I9AJ -->
